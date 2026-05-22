@@ -1,10 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boitshoko Bradlee Mojela | Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-$END$
+
+<header class="main-header">
+    <div class="logo">
+        <span class="logo-box">BB</span>
+        <strong class="logo-text">Mojela</strong>
+    </div>
+
+    <button class="menu-toggle" id="mobile-menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About me</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+</header>
+
+<div class="container book-page">
+
+    <section class="video-section">
+        <div class="video-box">
+            <video controls poster="images/video-thumbnail.jpg" width="100%">
+                <source src="videos/introduction.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <main class="profile-section">
+        <div class="bio-content">
+            <h1>Boitshoko Bradlee Mojela</h1>
+            <p class="tech-spec-title">BSc Physics & Computer Science Graduate</p>
+
+            <p class="bio-text">
+                I am a highly motivated graduate from North-West University with a strong foundation
+                in software engineering, algorithm design, and data architecture. I combine analytical
+                scientific thinking with full-stack development to build optimized, secure, and data-driven systems.
+            </p>
+        </div>
+
+        <div class="bio-image-container">
+            <img src="profile.jpeg" alt="Boitshoko Bradlee Mojela" class="profile-image">
+        </div>
+    </main>
+
+    <hr class="section-divider">
+
+    <section class="skills-hobbies-section">
+
+        <div class="skills-column">
+            <h2>Technical Skills</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <p class="category-title">Languages</p>
+                    <p class="category-items">JavaScript, Java, Python, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <p class="category-title">Software Development</p>
+                    <p class="category-items">OOP, Structured Programming, SDLC Methodologies</p>
+                </div>
+                <div class="skill-category">
+                    <p class="category-title">Systems & Data</p>
+                    <p class="category-items">Database Design, Relational Modelling, Normalization, Network Topologies (IPv4/IPv6)</p>
+                </div>
+            </div>
+
+            <div class="hobbies-wrapper">
+                <h2>Interests & Hobbies</h2>
+                <ul class="hobbies-list">
+                    <li>
+                        <strong>Full-Stack Coding</strong>
+                        <span>Building custom web applications and experimenting with server architectures.</span>
+                    </li>
+                    <li>
+                        <strong>Applied Physics</strong>
+                        <span>Exploring renewable thermal energy methods and solar cookers.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-form-column">
+            <h2>Send a Message</h2>
+            <form action="#" method="POST" class="book-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Message</button>
+            </form>
+        </div>
+
+    </section>
+
+    <hr class="section-divider">
+
+    <footer class="main-footer">
+        <div class="footer-col">
+            <p><strong>Address:</strong> 71/190 Endayeni, Tembisa 1632</p>
+            <p><strong>Phone:</strong> 071 046 5927 / 067 842 8661</p>
+        </div>
+        <div class="footer-col center">
+            <p class="footer-title">Quick Links</p>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col right">
+            <p class="footer-title">Connect</p>
+            <a href="https://github.com/Boitshoko-Mojela" target="_blank">GitHub Portfolio</a>
+        </div>
+    </footer>
+
+</div>
+
 </body>
 </html>

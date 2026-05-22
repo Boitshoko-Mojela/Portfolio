@@ -1,0 +1,482 @@
+/* ==========================================
+   1. VARIABLES & DESIGN SYSTEM (Book Theme)
+   ========================================== */
+:root {
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Color Palette */
+    --book-bg: #f4f1ea;       /* Warm cream desktop backdrop */
+    --page-bg: #ffffff;       /* Clean paper white content sheet */
+    --text-main: #2b2b2b;     /* Editorial ink tone */
+    --text-muted: #5a5a5a;    /* Pencil charcoal color */
+    --accent-color: #111111;  /* Sharp solid black accents */
+    --border-color: #e0dbd1;  /* Soft paper edge division line */
+
+    --header-height: 70px;
+}
+
+/* ==========================================
+   2. GLOBAL RESET & SCROLL BEHAVIOR
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Task 3c: Smooth scrolling */
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--book-bg);
+    color: var(--text-main);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   3. STICKY HEADER & USABILITY NAVIGATION
+   ========================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(254, 253, 251, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+/* Text Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-box {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.logo-text {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+/* Desktop Navigation Link Mechanics */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-left: 25px;
+    padding: 6px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+/* Task 3a: Minimal underline animation on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-color);
+}
+
+/* Hamburger Menu Toggle Button (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ==========================================
+   4. CONTENT LAYOUT (Book Page Container)
+   ========================================== */
+.container.book-page {
+    max-width: 960px;
+    margin: calc(var(--header-height) + 40px) auto 40px auto;
+    background-color: var(--page-bg);
+    padding: 60px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* Task 2c: Responsive Fluid Video Container */
+.video-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.video-box {
+    width: 100%;
+    max-width: 800px;
+    background-color: #000000;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+video {
+    display: block;
+    width: 100%;
+    height: auto; /* Maintains proportion beautifully as the viewport shrinks */
+}
+
+/* Profile Flexbox Row Layout */
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 20px;
+}
+
+.bio-content {
+    flex: 1;
+}
+
+.bio-content h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.tech-spec-title {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bio-text {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    text-align: justify;
+}
+
+/* Profile Picture Scale Protection */
+.bio-image-container {
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: block;
+    max-width: 100%;
+}
+
+/* Document Rule Lines */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 40px 0;
+}
+
+/* Task 2a: Main Technical Sections Grid Layout */
+.skills-hobbies-section {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    padding: 20px 0;
+}
+
+.skills-column h2, .hobbies-wrapper h2, .contact-form-column h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.skill-category {
+    padding-bottom: 12px;
+    border-bottom: 1px dotted var(--border-color);
+}
+
+.category-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.hobbies-wrapper {
+    margin-top: 40px;
+}
+
+.hobbies-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hobbies-list li {
+    display: flex;
+    flex-direction: column;
+}
+
+.hobbies-list strong {
+    font-size: 1.05rem;
+}
+
+.hobbies-list span {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   5. FORM INTERFACE DESIGN
+   ========================================== */
+.contact-form-column {
+    background-color: #faf9f6;
+    padding: 30px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.form-group input, .form-group textarea {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    background-color: var(--page-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--text-main);
+}
+
+.submit-btn {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #333333;
+}
+
+/* ==========================================
+   6. FOOTER SYSTEM LAYOUT
+   ========================================== */
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-col {
+    flex: 1;
+}
+
+.footer-col p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.footer-col.center a, .footer-col.right a {
+    display: block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.footer-col.center a:hover, .footer-col.right a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   7. RESPONSIVE MEDIA QUERIES (Task 2)
+   ========================================== */
+
+/* Tablet Optimization (Screens under 868px) */
+@media screen and (max-width: 868px) {
+    .container.book-page {
+        margin: calc(var(--header-height) + 20px) 20px 20px 20px;
+        padding: 40px;
+    }
+
+    .skills-hobbies-section {
+        grid-template-columns: 1fr; /* Stacks skills above the form column */
+        gap: 40px;
+    }
+}
+
+/* Mobile Layout & Hamburger Drawer Transition (Screens under 680px) */
+@media screen and (max-width: 680px) {
+    .main-header {
+        padding: 0 20px;
+    }
+
+    .menu-toggle {
+        display: flex; /* Displays the hamburger lines */
+        order: 2;      /* Explicitly shifts the button layout to the right side */
+    }
+
+    /* Task 3b: Converts standard links list into an overlay slider panel */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: rgba(254, 253, 251, 0.98);
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+
+        /* Handles the open/close sliding animation state */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Target state injected cleanly by your onclick HTML class assignment */
+    .nav-links.mobile-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        margin: 12px 0;
+        font-size: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Realigns the desktop Profile layout row into a crisp vertical block */
+    .profile-section {
+        flex-direction: column-reverse; /* Places profile photo cleanly on top of text headers */
+        text-align: center;
+        gap: 24px;
+    }
+
+    .bio-text {
+        text-align: center; /* Maximizes presentation logic across skinny phone screens */
+    }
+
+    /* Collapses multi-column footer columns vertically */
+    .main-footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+}
